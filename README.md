@@ -30,6 +30,11 @@ npm run start
 npm run test
 ```
 
+## Performance dashboard
+```bash
+/status
+```
+
 ## Helmet config
 ```javascript
 app.use(helmet());
