@@ -1,6 +1,6 @@
 # Microservice app
 
-Nodejs Microservice PRUVO TEST
+Nodejs Microservice
 
 ## Installation
 ```bash
