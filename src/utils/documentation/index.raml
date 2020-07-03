@@ -1,0 +1,17 @@
+#%RAML 2.0
+title: PWA Microservice
+version: 1.0
+documentation:
+- title: Application endpoints
+  content: Endpoints
+/conversion:
+  get:
+    displayName: Get conversion currency
+    description: Get conversion currency
+    responses: 
+      200:
+        description: Successful response
+        body:
+          application/json:
+            displayName: response
+            description: Successful response
