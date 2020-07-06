@@ -5,4 +5,4 @@ import { getCurrency } from "../controllers/";
 
 router.post("/conversion", getCurrency);
 
-export default router;
+export = router;

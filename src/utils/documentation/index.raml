@@ -1,13 +1,48 @@
-#%RAML 2.0
-title: PWA Microservice
+#%RAML 1.0
 version: 1.0
 documentation:
-- title: Application endpoints
+- title: Currency conversion microservice
   content: Endpoints
+types:
+  Error:
+    displayName: Error object
+    type: object
+    properties:
+      error:
+        type: object
+        required: true
+        description: Error details
+  Payload:
+    displayName: POST payload
+    type: object
+    properties:
+      payload:
+        type: object
+        required: true
+        properties:
+          amount:
+            type: number
+            required: true
+            description: Money amount
+          to:
+            type: string
+            required: true
+            description: Current currency
+          from:
+            type: string
+            required: true
+            description: Desired currency
+          email:
+            type: string
+            required: true
+            description: User email
 /conversion:
-  get:
-    displayName: Get conversion currency
-    description: Get conversion currency
+  post:
+    displayName: Conversion endpoint
+    description: Convert amount from one currency to another
+    body:
+        application/json:
+          type: Payload
     responses: 
       200:
         description: Successful response
@@ -15,3 +50,10 @@ documentation:
           application/json:
             displayName: response
             description: Successful response
+    responses: 
+       400:
+        description: Some parameters are not valid
+        body:
+          application/json:
+            displayName: response
+            description: description: Some parameters are not valid

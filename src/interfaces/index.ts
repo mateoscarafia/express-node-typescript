@@ -1,4 +1,6 @@
 export interface getConversionRequest {
     amount: number;
-    to: string
+    to: string;
+    from: string
+    email: string
  }

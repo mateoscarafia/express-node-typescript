@@ -35,6 +35,11 @@ npm run test
 /status
 ```
 
+## Documentation
+```bash
+/documentation
+```
+
 ## Helmet config
 ```javascript
 app.use(helmet());

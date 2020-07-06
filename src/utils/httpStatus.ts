@@ -1,7 +1,7 @@
 const httpStatus = {
   OK: {
     CODE: 200,
-    MSG: "OK",
+    MSG: "Success",
   },
   UNAUTHORIZED: {
     CODE: 401,
@@ -12,9 +12,17 @@ const httpStatus = {
     MSG: "Bad Request",
   },
   INVALID_CURRENCY: {
-    CODE: 200,
+    CODE: 400,
     MSG: "Invalid Currency",
+  },
+  INVALID_AMOUNT: {
+    CODE: 400,
+    MSG: "Invalid Amount",
+  },
+  INVALID_EMAIL: {
+    CODE: 400,
+    MSG: "Invalid Email",
   },
 };
 
-export default httpStatus
+export = httpStatus

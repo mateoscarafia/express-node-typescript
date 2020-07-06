@@ -14,9 +14,18 @@ const app = express();
 //limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100, 
+  max: 100,
 });
 app.use(limiter);
+
+const raml2html = require("raml2html");
+const ramlFile = path.join(__dirname, "../src/utils/documentation/index.raml");
+const configWithDefaultTheme = raml2html.getConfigForTheme();
+app.get("/documentation", (req, res) => {
+  raml2html.render(ramlFile, configWithDefaultTheme).then((result:any) => {
+    res.send(result)
+  });
+});
 
 //helmet
 app.use(helmet());
@@ -27,7 +36,7 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.referrerPolicy({ policy: "same-origin" }));
 
 //Application metrics
-app.use(require('express-status-monitor')());
+app.use(require("express-status-monitor")());
 
 app.set("port", config.PORT);
 
@@ -39,14 +48,20 @@ app.use(express.json());
 app.use(routes);
 
 app.use(
+  (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    next(new HttpException(404, "Not found"));
+  }
+);
+
+app.use(
   (
     err: HttpException,
     req: express.Request,
     res: express.Response,
     next: express.NextFunction
   ) => {
-    handleError(err, res);
+    handleError(err, req, res);
   }
 );
 
-export default app;
+export = app;

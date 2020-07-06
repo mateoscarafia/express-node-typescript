@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Response, Request } from "express";
 
 export class HttpException extends Error {
   status: number;
@@ -10,9 +10,13 @@ export class HttpException extends Error {
   }
 }
 
-export const handleError = (err: HttpException, res: Response) => {
-    const { status, message } = err;
-    res.status(status).json({
-      message
-    });
+export const handleError = (
+  err: HttpException,
+  req: Request,
+  res: Response
+) => {
+  const { status, message } = err;
+  res.status(status).json({
+    message,
+  });
 };

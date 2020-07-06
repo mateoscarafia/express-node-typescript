@@ -9,9 +9,9 @@ class HttpException extends Error {
     }
 }
 exports.HttpException = HttpException;
-exports.handleError = (err, res) => {
+exports.handleError = (err, req, res) => {
     const { status, message } = err;
     res.status(status).json({
-        message
+        message,
     });
 };

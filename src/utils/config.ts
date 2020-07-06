@@ -1,12 +1,11 @@
-export default {
+export = {
   ENV: process.env.ENV || "development",
   PORT:
     process.env.ENV == "production"
-      ? 80
+      ? 3100
       : process.env.ENV == "staging"
-      ? 80
-      : 80,
-  OPENEX_ID: "408d124e664f49dda4262fc19aa6c969",
+      ? 3100
+      : 3100,
   OPENEX_URL: "https://openexchangerates.org/api/latest.json?app_id=",
   CURRENCIES: [
     "AED",
